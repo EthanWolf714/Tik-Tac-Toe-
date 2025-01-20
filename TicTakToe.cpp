@@ -62,18 +62,27 @@ char humanPiece(){
     cout << "/nOkay then you go first./n";
     return 'X';
   } else{
-    cout << "/nThen ill go first!";
+    cout << "/nThen ill go first!/n";
     return 'O';
   }
 }
 
 char opponent(char piece){
-  return 'a';
+   if(piece == 'X'){
+    return o;
+   }else{
+    return x;
+   }
 }
 
 void displayBoard(const vector<char>& board)
 {
-
+  cout << "/n/t" << board[0] << " | " << board[1] << " | " << board[2];
+  cout << " -----------";
+  cout << "/n/t" << board[3] << " | " << board[4] << " | " << board[5];
+  cout << " -----------";
+  cout << "/n/t" << board[6] << " | " << board[7] << " | " << board[8];
+  cout << "/n/n";
 }
 
 char winner(const vector<char>& board)
@@ -103,6 +112,10 @@ int main()
   const int NUM_SQAURES = 9;
   vector<char> board(NUM_SQAURES, EMPTY);
   instructions();
+  char human = humanPiece();
+  char computer = opponent(human);
+  char turn = x;
+  displayBoard(board);
 
 
 }
