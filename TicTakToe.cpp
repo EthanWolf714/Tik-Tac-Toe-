@@ -77,12 +77,12 @@ char opponent(char piece){
 
 void displayBoard(const vector<char>& board)
 {
-  cout << "/n/t" << board[0] << " | " << board[1] << " | " << board[2];
-  cout << " -----------";
-  cout << "/n/t" << board[3] << " | " << board[4] << " | " << board[5];
-  cout << " -----------";
-  cout << "/n/t" << board[6] << " | " << board[7] << " | " << board[8];
-  cout << "/n/n";
+  cout << "\n\t" << board[0] << " | " << board[1] << " | " << board[2];
+  cout << "\n\t" << "---------";
+  cout << "\n\t" << board[3] << " | " << board[4] << " | " << board[5];
+  cout << "\n\t" << "---------";
+  cout << "\n\t" << board[6] << " | " << board[7] << " | " << board[8];
+  cout << "\n\n";
 }
 
 char winner(const vector<char>& board)
