@@ -12,7 +12,7 @@ using namespace std;
 //Global variables
 const char x = 'X';
 const char o = 'O';
-const char empty = ' ';
+const char EMPTY = ' ';
 const char tie = 'T';
 const char NO_ONE = 'N';
 
@@ -22,6 +22,7 @@ const char NO_ONE = 'N';
 //Dsiplays game instructinos
 void instructions()
 {
+  
   cout << "Welcome to Tik Tak Toe!" << endl;
   cout << "-------------------------" << endl;
   cout << "Choose a space to occupie by chooseing a number 0-8" << endl;
@@ -46,11 +47,24 @@ char askYesNo(string question)
 
 
 int askNUmber(string question, int high, int low = 0){
-  return 0;
+  int number;
+  do 
+  {
+    cout << question << "( " << low << " - " << high << "): ";
+    cin >> number;
+  }while(number > high || number < low);
+  return number;
 }
 
 char humanPiece(){
-  return 'a';
+  char goFirst = askYesNo("Do you want to go first?");
+  if(goFirst == 'y'){
+    cout << "/nOkay then you go first./n";
+    return 'X';
+  } else{
+    cout << "/nThen ill go first!";
+    return 'O';
+  }
 }
 
 char opponent(char piece){
@@ -85,8 +99,10 @@ void announceWinner(char winner, char computer, char human)
 // main functions
 int main()
 {
+  int move;
+  const int NUM_SQAURES = 9;
+  vector<char> board(NUM_SQAURES, EMPTY);
   instructions();
-
 
 
 }
