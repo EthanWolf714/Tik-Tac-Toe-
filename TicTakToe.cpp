@@ -13,7 +13,7 @@ using namespace std;
 const char x = 'X';
 const char o = 'O';
 const char EMPTY = ' ';
-const char tie = 'T';
+const char TIE = 'T';
 const char NO_ONE = 'N';
 
 
@@ -59,10 +59,10 @@ int askNUmber(string question, int high, int low = 0){
 char humanPiece(){
   char goFirst = askYesNo("Do you want to go first?");
   if(goFirst == 'y'){
-    cout << "/nOkay then you go first./n";
+    cout << "\nOkay then you go first.\n";
     return 'X';
   } else{
-    cout << "/nThen ill go first!/n";
+    cout << "\nThen ill go first!\n";
     return 'O';
   }
 }
@@ -87,7 +87,25 @@ void displayBoard(const vector<char>& board)
 
 char winner(const vector<char>& board)
 {
+    //possible winning rows
+    const int WINNING_ROWS[8][3] = {{0,1,2}, {3,4,5}, {6,7,8},{0,3,6}, {1,4,7},{2,5,8},{0,4,8},{2,4,6}};
+    const int TOTAL_ROWS = 8;
+    //if any winning row has three values that are the same (and not empty)
+    //then we win
+    for(int row = 0; row < TOTAL_ROWS; row++){
+      if((board[WINNING_ROWS[row][0]] != EMPTY) &&
+          (board[WINNING_ROWS[row][0]] == board[WINNING_ROWS[row][1]]) &&
+            (board[WINNING_ROWS[row][0]] == board[WINNING_ROWS[row][2]]))
+      {
+        return board[WINNING_ROWS[row][0]];
+      }
+      // if no body has one then return a tie.
+      if(count(board.begin(), board.end(), EMPTY) == 0){
+        return TIE;
+      }
 
+    }
+    return NO_ONE;
 }
 
 bool isLegal(const vector<char>& board, int mnove)
